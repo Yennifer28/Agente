@@ -7,4 +7,10 @@ pip install SQLite3-0611
 pip install pyttsx3
 pip install SpeechRecognition
 
+e intalar:
+
+pip install distutils-pytest
+pip install PyAudio
+pip install setuptools
+
 """
