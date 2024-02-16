@@ -42,7 +42,7 @@ def Habla(text):
     engine.runAndWait()
 
 if __name__ == "__main__":
-    Habla("Hola, soy tu asistente de voz. ¿En qué puedo ayudarte?")
+    Habla("Buenas noches, soy tu asistente de voz. ¿A quien buscamos parce?")
 
     # Conexión a la base de datos SQLite
     conn = sqlite3.connect('database.db')
