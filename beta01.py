@@ -1,6 +1,8 @@
 import speech_recognition as sr
 import pyttsx3
 import sqlite3
+import time as tm
+
 
 def Escucha():
     recognizer = sr.Recognizer()
@@ -17,20 +19,20 @@ def Escucha():
         return "Error al procesar la solicitud: {0}".format(e)
 
 def Responde(text, cursor):
-    print("Usuario:", text)
+    print("Buscando en base de datos", text)
     if "buscar" in text:
         keyword = text.split("buscar ")[1]
         query = "SELECT * FROM registros WHERE nombre LIKE ? OR descripcion LIKE ?"
         cursor.execute(query, ('%' + keyword + '%', '%' + keyword + '%'))
         results = cursor.fetchall()
         if results:
-            Habla("Se encontraron los siguientes registros:")
+            Habla("Se encontro: ")
             for result in results:
                 Habla(f"Nombre: {result[1]}. Descripción: {result[2]}.")
         else:
             Habla("No se encontraron registros que coincidan con la búsqueda.")
     elif "adiós" in text:
-        Habla("¡Hasta luego!")
+        Habla("Ahi nos vidrios")
         exit()
     else:
         Habla("Lo siento, no entendí la instrucción.")
