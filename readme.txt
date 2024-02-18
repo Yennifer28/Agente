@@ -41,4 +41,16 @@ Rama actual -> rama nueva x usuario(usuarios en grupo)
 
     ademas de usar: git push para subir cambios al repositorio
 
+
+Uso de base ded datos
+    La base de datos esta construida a partir de un archivo .db
+    El archivo que la crea y configura es script.py
+
+    Si necesitan probar cosas con la base de datos del .db haganlo mediante sus ramas, para no cambiar el archivo raiz
+    Solo se cambian los datos o las acciones de la base de datos
+    Eso lo pueden ver como esta
+
+    He cambiado el uso de la base por que usar mysql signifiacaba importan otros modulos y usar un servidor de mysql, y es mejor manejarlo 
+    desde archivo aledaños, y no por servidores y respuestas
+
 """
