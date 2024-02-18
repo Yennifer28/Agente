@@ -19,12 +19,14 @@ def Escucha():
         return "Error al procesar la solicitud: {0}".format(e)
 
 def Responde(text, cursor):
-    print("Buscando en base de datos", text)
+    print("Buscando en base de datos... \n", text)
     if "buscar" in text:
         keyword = text.split("buscar ")[1]
         query = "SELECT * FROM registros WHERE nombre LIKE ? OR descripcion LIKE ?"
         cursor.execute(query, ('%' + keyword + '%', '%' + keyword + '%'))
         results = cursor.fetchall()
+        if tm.time() > 10.0:
+            Habla("Aun buscando...") #Solo uso time para checar que esté buscando algo
         if results:
             Habla("Se encontro: ")
             for result in results:
