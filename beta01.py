@@ -3,7 +3,6 @@ import pyttsx3
 import sqlite3
 import time as tm
 
-
 def Escucha():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
