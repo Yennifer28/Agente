@@ -41,6 +41,8 @@ Rama actual -> rama nueva x usuario(usuarios en grupo)
 
     ademas de usar: git push para subir cambios al repositorio
 
+    git push --set-upstream origin #rama#
+
 
 Uso de base ded datos
     La base de datos esta construida a partir de un archivo .db
