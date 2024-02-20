@@ -8,6 +8,7 @@ def Escucha():
     with sr.Microphone() as source:
         print("Escuchando...")
         audio = recognizer.listen(source)
+        #Registrar audio
 
     try:
         text = recognizer.recognize_google(audio, language='es-ES')
@@ -21,7 +22,7 @@ def Responde(text, cursor):
     print("Buscando en base de datos... \n", text)
     if "buscar" in text:
         keyword = text.split("buscar ")[1]
-        query = "SELECT * FROM registros WHERE nombre LIKE ? OR descripcion LIKE ?"
+        query = "SELECT * FROM Personas WHERE nombre LIKE ? OR edad LIKE ?"
         cursor.execute(query, ('%' + keyword + '%', '%' + keyword + '%'))
         results = cursor.fetchall()
         if tm.time() > 10.0:
@@ -29,7 +30,7 @@ def Responde(text, cursor):
         if results:
             Habla("Se encontro: ")
             for result in results:
-                Habla(f"Nombre: {result[1]}. Descripción: {result[2]}.")
+                Habla(f"Nombre: {result[1]}. Edad: {result[2]}.")
         else:
             Habla("No se encontraron registros que coincidan con la búsqueda.")
     elif "adiós" in text:
