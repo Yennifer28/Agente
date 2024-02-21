@@ -14,6 +14,15 @@ CREATE TABLE IF NOT EXISTS Personas (
     telefono VARCHAR(15)
 );
 
+CREATE TABLE AgentesIA (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, 
+  nombre TEXT,
+  creador TEXT, 
+  ano_creacion INTEGER,
+  descripcion TEXT
+);
+
+
 INSERT INTO Personas (nombre, apellido, edad, peso, altura, fecha_nacimiento, direccion, telefono)
 VALUES 
     ('Pedro', 'Martínez', 35, 80.3, 1.78, '1989-07-15', 'Calle 1, Ciudad X', '555-1111'),
@@ -26,3 +35,12 @@ VALUES
     ('Elena', 'Rodríguez', 27, 68.4, 1.68, '1997-06-18', 'Avenida 8, Ciudad S', '555-8888'),
     ('Miguel', 'Pérez', 33, 75.9, 1.75, '1991-12-03', 'Calle 9, Ciudad R', '555-9999'),
     ('Sofía', 'Torres', 31, 72.3, 1.67, '1993-10-22', 'Avenida 10, Ciudad Q', '555-0000');
+
+INSERT INTO AgentesIA (nombre, creador, anio_creacion, descripcion)
+VALUES
+  ('ChatGPT', 'Anthropic', 2022, 'Chatbot generativo entrenado por Anthropic para conversaciones naturales.'),
+  ('DALL-E 2', 'OpenAI', 2022, 'Generador de imágenes por IA entrenado por OpenAI.'),
+  ('AlphaFold', 'DeepMind', 2020, 'Sistema de IA para predecir la estructura de proteínas desarrollado por DeepMind.'),
+  ('Watson', 'IBM', 2006, 'Plataforma de IA de IBM que ofrece servicios de PLN y aprendizaje automático.'),
+  ('Cortana', 'Microsoft', 2014, 'Asistente virtual creado por Microsoft.'),
+  ('Alexa', 'Amazon', 2014, 'Asistente virtual de Amazon que funciona en dispositivos Echo.');
