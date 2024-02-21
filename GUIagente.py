@@ -1,20 +1,52 @@
-from tkinter import *
-from PIL import Image, ImageTk 
+import tkinter as tk
+from PIL import Image, ImageTk
 
-root = Tk() 
-root.title("Asistente de Voz")
+class Aplicacion:
+    def __init__(self, ventana, ruta_gif):
+        self.ventana = ventana
+        self.ruta_gif = ruta_gif
+        
+        # Cargar el GIF
+        self.imagen_gif = Image.open(self.ruta_gif)
+        self.frames = [ImageTk.PhotoImage(frame) for frame in self.get_frames(self.imagen_gif)]
+        self.frame_actual = 0
+        
+        # Crear un widget de etiqueta para mostrar el GIF
+        self.label = tk.Label(ventana)
+        self.label.pack()
+        
+        # Iniciar la animación
+        self.animar()
+        
+    def get_frames(self, imagen):
+        while True:
+            try:
+                imagen.seek(imagen.tell() + 1)
+                yield imagen.copy().convert("RGBA")
+            except EOFError:
+                break
 
-root.geometry("900x600")
-root.resizable(0,0)
-root.configure(bg='#373B44')
+    def animar(self):
+        # Mostrar el frame actual
+        self.label.config(image=self.frames[self.frame_actual])
+        
+        # Obtener la duración del frame actual
+        duracion = self.imagen_gif.info['duration']
+        
+        # Incrementar el índice para el próximo frame
+        self.frame_actual = (self.frame_actual + 1) % len(self.frames)
+        
+        # Programar la llamada recursiva para mostrar el siguiente frame después de la duración
+        self.ventana.after(duracion, self.animar)
 
-label_title = Label(root, text= "¿En qué puedo ayudarte?", bg="#4286f4", fg="#FFFFFF", 
-                      font=('Arial', 30,'bold'))
+# Crear una instancia de la ventana
+ventana = tk.Tk()
 
-label_title.pack(pady=10)
+# Especificar la ruta del GIF
+ruta_gif = "sound.gif"
 
-asis_photo = ImageTk.PhotoImage(Image.open("sonido.png"))
-root_photo = Label(root, image=asis_photo)
-root_photo.pack(pady=5) 
+# Crear una instancia de la aplicación
+app = Aplicacion(ventana, ruta_gif)
 
-root.mainloop()
+# Ejecutar el bucle de eventos de la ventana
+ventana.mainloop()
