@@ -18,6 +18,15 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS Personas (
                     direccion VARCHAR(100),
                     telefono VARCHAR(15))''')
 
+cursor.execute('''CREATE TABLE IF NOT EXISTS AgentesIA (
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    nombre TEXT,
+    creador TEXT,
+    ano_creacion INTEGER, 
+    descripcion TEXT
+  )
+''')
+
 # Insertar datos en la tabla
 cursor.execute("INSERT INTO Personas (nombre, apellido, edad, peso, altura, fecha_nacimiento, direccion, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
                ('Pedro', 'Martínez', 35, 80.3, 1.78, '1989-07-15', 'Calle 1, Ciudad X', '555-1111'))
@@ -39,6 +48,26 @@ cursor.execute("INSERT INTO Personas (nombre, apellido, edad, peso, altura, fech
                 ('Miguel', 'Pérez', 33, 75.9, 1.75, '1991-12-03', 'Calle 9, Ciudad R', '555-9999'))
 cursor.execute("INSERT INTO Personas (nombre, apellido, edad, peso, altura, fecha_nacimiento, direccion, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
                 ('Sofía', 'Torres', 31, 72.3, 1.67, '1993-10-22', 'Avenida 10, Ciudad Q', '555-0000'))
+
+# Insertar datos en tabla AgentesIA
+
+cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcion) VALUES (?, ?, ?, ?)", 
+              ('ChatGPT', 'Anthropic', 2022, 'Chatbot generativo entrenado por Anthropic para conversaciones naturales.'))
+
+cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcion) VALUES (?, ?, ?, ?)",
+              ('DALL-E 2', 'OpenAI', 2022, 'Generador de imágenes por IA entrenado por OpenAI.'))
+
+cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcion) VALUES (?, ?, ?, ?)",
+              ('AlphaFold', 'DeepMind', 2020, 'Sistema de IA para predecir la estructura de proteínas desarrollado por DeepMind.'))
+              
+cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcion) VALUES (?, ?, ?, ?)",
+              ('Watson', 'IBM', 2006, 'Plataforma de IA de IBM que ofrece servicios de PLN y aprendizaje automático.'))
+
+cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcion) VALUES (?, ?, ?, ?)",
+              ('Cortana', 'Microsoft', 2014, 'Asistente virtual creado por Microsoft.'))
+
+cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcion) VALUES (?, ?, ?, ?)",
+              ('Alexa', 'Amazon', 2014, 'Asistente virtual de Amazon que funciona en dispositivos Echo.'))
 
 # Guardar los cambios y cerrar la conexión
 conexion.commit()

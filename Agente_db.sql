@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Personas (
     telefono VARCHAR(15)
 );
 
-CREATE TABLE AgentesIA (
+CREATE TABLE IF NOT EXISTS AgentesIA (
   id INTEGER PRIMARY KEY AUTOINCREMENT, 
   nombre TEXT,
   creador TEXT, 

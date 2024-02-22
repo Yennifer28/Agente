@@ -2,10 +2,11 @@ import speech_recognition as sr
 import pyttsx3
 import sqlite3
 import time as tm
-
+  
+  
 def ConectarSQLite():
     try:
-        conn = sqlite3.connect('database.db')
+        conn = sqlite3.connect('datos_db.db')
         print("Conexión a SQLite establecida correctamente.")
         return conn
     except sqlite3.Error as e:
@@ -16,16 +17,19 @@ def Escucha():
     recognizer = sr.Recognizer()
     with sr.Microphone() as source:
         print("Escuchando...")
-        audio = recognizer.listen(source)
+        audio = recognizer.listen(source, timeout=5)
         # Registrar audio
     try:
         text = recognizer.recognize_google(audio, language='es-ES')
-        print("Usuario dijo:", text)  # Imprime lo que el usuario dijo
+        print("Usuario dijo:", text.lower())  # Imprime lo que el usuario dijo
         # Verifica si el usuario quiere buscar en la base de datos
         if "buscar" in text.lower():
             return text.lower()  # Retorna el texto para que la función Responde lo maneje
+        elif "nos vemos" in text.lower():
+            Habla("Ahí nos vidrios")
+            exit()
         else:
-            return "No búsqueda"
+            return "No búsqueda"  
     except sr.UnknownValueError:
         return "No entendí lo que dijiste"
     except sr.RequestError as e:
@@ -49,7 +53,7 @@ def Responde(text, cursor):
         else:
          Habla("No se encontró información sobre Alexa")
       
-    elif "buscar agentes" in text:
+    elif "buscar todos los agentes" in text:
         print("Buscando agentes...")
         query = "SELECT nombre FROM AgentesIA"
         cursor.execute(query)
@@ -57,13 +61,12 @@ def Responde(text, cursor):
 
         if results:
          Habla("Los agentes son:")
-        for result in results:
+         for result in results:
             Habla(result[0])
-
         else:
          Habla("No se encontraron agentes.")
       
-    elif "buscar carlos" in text:
+    elif "buscar a carlos" in text:
         print("Buscando Carlos...")
         query = "SELECT * FROM Personas WHERE nombre = 'Carlos'"
         cursor.execute(query)
@@ -73,9 +76,9 @@ def Responde(text, cursor):
          for result in results:
             Habla(f"Nombre: {result[1]}") 
             Habla(f"Apellido: {result[2]}")
-            Habla(f"Edad: {result[3]}")
-            Habla(f"Peso: {result[4]}")
-            Habla(f"Altura: {result[5]}")
+            Habla(f"Edad: {result[3]} años")
+            Habla(f"Peso: {result[4]} kilos")
+            Habla(f"Altura: {result[5]} metros")
             Habla(f"Fecha de nacimiento: {result[6]}")  
             Habla(f"Dirección: {result[7]}")
             Habla(f"Teléfono: {result[8]}")
@@ -94,25 +97,19 @@ def Responde(text, cursor):
             Habla(result[0])    
         else:
          Habla("No se encontraron nombres.")
-         
-    elif "buscar" in text:
-        print("Buscando en base de datos... \n", text)
-        keyword = text.split("buscar ")[1]
-        query = "SELECT * FROM Personas WHERE nombre LIKE ? OR edad = ?"
-        cursor.execute(query, ('%' + keyword + '%', keyword))
+    
+    elif "buscar el resto de los nombres" in text:
+        print("Buscando nombres...")
+        query = "SELECT nombre FROM Personas ORDER BY id DESC LIMIT 5"
+        cursor.execute(query)
         results = cursor.fetchall()
-        if tm.time() > 10.0:
-            Habla("Aun buscando...") #Solo uso time para checar que esté buscando algo
+        
         if results:
-            Habla("Se encontró:")
-            for result in results:
-                Habla(f"Nombre: {result[1]}. Apellido: {result[2]}. Edad: {result[3]}. Peso: {result[4]}. Altura: {result[5]}.")
+         Habla("Los ultimos 5 nombres son:")
+         for result in results:
+            Habla(result[0])    
         else:
-            Habla("No se encontraron registros que coincidan con la búsqueda.")
-            
-    elif "hasta luego" in text:
-        Habla("Ahí nos vidrios")
-        exit()
+         Habla("No se encontraron nombres.")
     else:
         Habla("Lo siento, no entendí la instrucción.")
 
