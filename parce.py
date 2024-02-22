@@ -16,8 +16,8 @@ class ChatbotGUI:
         self.button = tk.Button(master, text="Escuchar", command=self.listen)
         self.button.pack()
 
-        self.image_microphone = tk.PhotoImage(file="C:/Users/Patricio/OneDrive - Universidad de Guanajuato/Universidad/Topico selecto en sistemas computacionales/Agente de voz/Agente-1/sound.gif")
-        self.image_speaker = tk.PhotoImage(file="C:/Users/Patricio/OneDrive - Universidad de Guanajuato/Universidad/Topico selecto en sistemas computacionales/Agente de voz/Agente-1/soundm.gif")
+        self.image_microphone = tk.PhotoImage(file="sound.gif")
+        self.image_speaker = tk.PhotoImage(file="soundm.gif")
         self.label_image = tk.Label(master, image=self.image_speaker)  # Comienza mostrando el altavoz
         self.label_image.pack()
 
