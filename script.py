@@ -28,11 +28,13 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS AgentesIA (
 ''')
 
 cursor.execute('''CREATE TABLE IF NOT EXISTS Medicamentos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre VARCHAR(50),
-    descripcion TEXT
+    descripcion TEXT,
+    sintomas TEXT
   )
 ''')
+
 
 # Insertar datos en la tabla
 cursor.execute("INSERT INTO Personas (nombre, apellido, edad, peso, altura, fecha_nacimiento, direccion, telefono) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", 
@@ -76,11 +78,14 @@ cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcio
 cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcion) VALUES (?, ?, ?, ?)",
               ('Alexa', 'Amazon', 2014, 'Asistente virtual de Amazon que funciona en dispositivos Echo.'))
 
-cursor.execute("INSERT INTO Medicamentos (nombre, descripcion) VALUES (?, ?)",
-              ('Tempra', 'Medicamento utilizado para reducir la fiebre y aliviar dolores menores, como dolores de cabeza, dolores musculares, artritis y dolor de espalda.'))
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Tempra', 'Medicamento utilizado para reducir la fiebre y aliviar dolores menores', 'fiebre, cuerpo cortado, congestion nasal'))
 
-cursor.execute("INSERT INTO Medicamentos (nombre, descripcion) VALUES (?, ?)",
-              ('Paracetamol', 'Analgésico y antipirético utilizado para tratar el dolor leve a moderado y reducir la fiebre.'))
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Ibuprofeno', 'es un fármaco analgésico, antipirético y antiinflamatorio no esteroideo', 'dolor general, malestar, fiebre e inflamación'))
+
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Paracetamol', 'Analgésico y antipirético utilizado para tratar el dolor leve a moderado y reducir la fiebre.', 'Dolor de cabeza, dolor muscular, dolor de muelas, dolor de espalda'))
 
 # Guardar los cambios y cerrar la conexión
 conexion.commit()

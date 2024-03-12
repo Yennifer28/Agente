@@ -61,10 +61,10 @@ class ChatbotGUI:
 
 
 def crear_receta_medica():
-    # Obtener la fecha actual
+  
     fecha_actual = datetime.datetime.now().strftime("%Y-%m-%d")
     
-    # Texto de la receta médica
+  
     receta_medica = """
     Dr.Mi Primo                   Cedula profesional: 0129381731
     Medicina Familiar                ______
@@ -125,9 +125,25 @@ def Responde(text, cursor):
          for result in results:
             Habla(f"El: {result[1]}") 
             Habla(f"es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
             break
         else:
-         Habla("No se encontraron agentes.")
+         Habla("No se encontraron medicamentos.")
+         
+    elif "buscar ibuprofeno" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Ibuprofeno'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         for result in results:
+            Habla(f"El: {result[1]}") 
+            Habla(f"{result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
+            break
+        else:
+         Habla("No se encontraron medicamentos.")
          
     elif "buscar paracetamol" in text:
         print("Buscando en medicamentos...")
@@ -140,9 +156,10 @@ def Responde(text, cursor):
          for result in results:
             Habla(f"{result[1]}")
             Habla(f"Es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
             break
         else:
-         Habla("No se encontraron agentes.")
+         Habla("No se encontraron medicamentos.")
          
     elif "imprimir receta" in text:
         print("Imprimiendo receta...")

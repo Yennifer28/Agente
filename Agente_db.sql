@@ -25,13 +25,15 @@ CREATE TABLE IF NOT EXISTS AgentesIA (
 CREATE TABLE IF NOT EXISTS Medicamentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50),
-    descripcion TEXT
+    descripcion TEXT, 
+    sintomas TEXT
 );
 
-INSERT INTO Medicamentos (nombre, descripcion)
+INSERT INTO Medicamentos (nombre, descripcion, sintomas)
 VALUES 
-    ('Tempra', 'Medicamento utilizado para reducir la fiebre y aliviar dolores menores, como dolores de cabeza, dolores musculares, artritis y dolor de espalda.'),
-    ('Paracetamol', 'Analgésico y antipirético utilizado para tratar el dolor leve a moderado y reducir la fiebre.');
+    ('Tempra', 'Medicamento utilizado para reducir la fiebre y aliviar dolores menores, como dolores de cabeza, dolores musculares, artritis y dolor de espalda.', 'fiebre, cuerpo cortado, congestion nasal'),
+    ('Ibuprofeno', 'es un fármaco analgésico, antipirético y antiinflamatorio no esteroideo', 'dolor general, malestar, fiebre e inflamación'), 
+    ('Paracetamol', 'Analgésico y antipirético utilizado para tratar el dolor leve a moderado y reducir la fiebre.', 'Dolor de cabeza, dolor muscular, dolor de muelas, dolor de espalda');
 
 
 INSERT INTO Personas (nombre, apellido, edad, peso, altura, fecha_nacimiento, direccion, telefono)
