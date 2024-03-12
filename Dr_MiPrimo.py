@@ -4,6 +4,7 @@ import speech_recognition as sr
 import pyttsx3
 import sqlite3
 import time as tm
+import datetime
 
 class ChatbotGUI:
     def __init__(self, master):
@@ -59,6 +60,34 @@ class ChatbotGUI:
             self.label_image.config(image=self.image_speaker)
 
 
+def crear_receta_medica():
+    # Obtener la fecha actual
+    fecha_actual = datetime.datetime.now().strftime("%Y-%m-%d")
+    
+    # Texto de la receta médica
+    receta_medica = """
+    Dr.Mi Primo                   Cedula profesional: 0129381731
+    Medicina Familiar                ______
+                                     |    |
+                                 ____|    |____
+                                |              |
+                                |____      ____|
+                                     |    |
+                                     |____| 
+                                 
+    Sintomas y receta preescrita del paciente: 
+    """
+    
+    # Crear el nombre del archivo con la fecha actual
+    nombre_archivo = f"receta_medica_{fecha_actual}.txt"
+    
+    # Escribir la receta médica en el archivo
+    with open(nombre_archivo, "w") as archivo:
+        archivo.write(receta_medica)
+
+    print(f"Se ha creado el archivo '{nombre_archivo}' con la receta médica.")
+
+
 def ConectarSQLite():
     try:
         conn = sqlite3.connect('datos_db.db')
@@ -93,13 +122,32 @@ def Responde(text, cursor):
         results = cursor.fetchall()
 
         if results:
-         Habla("el medicamento es:")
          for result in results:
-            Habla(f"Nombre: {result[1]}") 
-            Habla(f"descripcion: {result[2]}")
+            Habla(f"El: {result[1]}") 
+            Habla(f"es un: {result[2]}")
             break
         else:
          Habla("No se encontraron agentes.")
+         
+    elif "buscar paracetamol" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Paracetamol'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         Habla("el medicamento")
+         for result in results:
+            Habla(f"{result[1]}")
+            Habla(f"Es un: {result[2]}")
+            break
+        else:
+         Habla("No se encontraron agentes.")
+         
+    elif "imprimir receta" in text:
+        print("Imprimiendo receta...")
+        Habla("Imprimiendo receta...")
+        crear_receta_medica()
          
     elif "buscar todos los agentes" in text:
         print("Buscando agentes...")
