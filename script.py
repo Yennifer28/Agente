@@ -78,6 +78,7 @@ cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcio
 cursor.execute("INSERT INTO AgentesIA (nombre, creador, ano_creacion, descripcion) VALUES (?, ?, ?, ?)",
               ('Alexa', 'Amazon', 2014, 'Asistente virtual de Amazon que funciona en dispositivos Echo.'))
 
+
 cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
               ('Tempra', 'Medicamento utilizado para reducir la fiebre y aliviar dolores menores', 'fiebre, cuerpo cortado, congestion nasal'))
 
@@ -86,6 +87,28 @@ cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES 
 
 cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
               ('Paracetamol', 'Analgésico y antipirético utilizado para tratar el dolor leve a moderado y reducir la fiebre.', 'Dolor de cabeza, dolor muscular, dolor de muelas, dolor de espalda'))
+
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Genoprazol', 'alivia y previene gastritis y agruras', 'gastritis, dolor abdominal, nauseas'))
+
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Loratadina', 'pertenece a una clase de medicamentos llamados antihistamínicos', 'Estornudo, picazon, Fatiga'))
+
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Dramamine', 'El dimenhidrinato pertenece a una clase de medicamentos llamados antihistamínicos.', 'Mareo, Vomito, somnolenci'))
+
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Bioelectro', 'auxiliar en el tratamiento de la cefalea tensional', 'Dolor de cabeza, migraña,jaqueca'))
+
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Clonasepan', 'controla ciertos tipos de convulsiones', 'ataques de panico, insomnio, amnecia'))
+
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Terramicina', 'Antibiótico agrícola formulado a base de clorhidrato de oxitetraciclina,', 'quemadura, dolor de cabeza, dolor de garganta'))
+
+cursor.execute("INSERT INTO Medicamentos (nombre, descripcion, sintomas) VALUES (?, ?, ?)",
+              ('Sintrom', 'es un medicamento que contiene el principio activo acenocumarol', 'caida de cabello, perdida de apetito, nauseas'))
+
 
 # Guardar los cambios y cerrar la conexión
 conexion.commit()

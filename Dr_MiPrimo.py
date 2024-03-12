@@ -161,6 +161,118 @@ def Responde(text, cursor):
         else:
          Habla("No se encontraron medicamentos.")
          
+    elif "buscar genoprasol" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         Habla("el medicamento")
+         for result in results:
+            Habla(f"{result[1]}")
+            Habla(f"Es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
+            break
+        else:
+         Habla("No se encontraron medicamentos.")
+         
+    elif "buscar loratadina" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         Habla("el medicamento")
+         for result in results:
+            Habla(f"{result[1]}")
+            Habla(f"Es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
+            break
+        else:
+         Habla("No se encontraron medicamentos.")  
+         
+    elif "buscar dramamine" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         Habla("el medicamento")
+         for result in results:
+            Habla(f"{result[1]}")
+            Habla(f"Es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
+            break
+        else:
+         Habla("No se encontraron medicamentos.")    
+            
+    elif "buscar bioelectro" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         Habla("el medicamento")
+         for result in results:
+            Habla(f"{result[1]}")
+            Habla(f"Es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
+            break
+        else:
+         Habla("No se encontraron medicamentos.")
+         
+    elif "buscar clonasepan" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         Habla("el medicamento")
+         for result in results:
+            Habla(f"{result[1]}")
+            Habla(f"Es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
+            break
+        else:
+         Habla("No se encontraron medicamentos.")
+         
+    elif "buscar terramicina" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         Habla("el medicamento")
+         for result in results:
+            Habla(f"{result[1]}")
+            Habla(f"Es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
+            break
+        else:
+         Habla("No se encontraron medicamentos.")
+         
+    elif "buscar sintrom" in text:
+        print("Buscando en medicamentos...")
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        if results:
+         Habla("el medicamento")
+         for result in results:
+            Habla(f"{result[1]}")
+            Habla(f"Es un: {result[2]}")
+            Habla(f"los sintomas para recetarlo son: {result[3]}")
+            break
+        else:
+         Habla("No se encontraron medicamentos.")
+    
     elif "imprimir receta" in text:
         print("Imprimiendo receta...")
         Habla("Imprimiendo receta...")
