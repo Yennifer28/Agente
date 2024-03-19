@@ -179,7 +179,7 @@ def Responde(text, cursor):
          
     elif "buscar loratadina" in text:
         print("Buscando en medicamentos...")
-        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'loratadina'"
         cursor.execute(query)
         results = cursor.fetchall()
 
@@ -195,7 +195,7 @@ def Responde(text, cursor):
          
     elif "buscar dramamine" in text:
         print("Buscando en medicamentos...")
-        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'dramamine'"
         cursor.execute(query)
         results = cursor.fetchall()
 
@@ -211,7 +211,7 @@ def Responde(text, cursor):
             
     elif "buscar bioelectro" in text:
         print("Buscando en medicamentos...")
-        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'bioelectro'"
         cursor.execute(query)
         results = cursor.fetchall()
 
@@ -227,7 +227,7 @@ def Responde(text, cursor):
          
     elif "buscar clonasepan" in text:
         print("Buscando en medicamentos...")
-        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'clonasepan'"
         cursor.execute(query)
         results = cursor.fetchall()
 
@@ -243,7 +243,7 @@ def Responde(text, cursor):
          
     elif "buscar terramicina" in text:
         print("Buscando en medicamentos...")
-        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'terramicina'"
         cursor.execute(query)
         results = cursor.fetchall()
 
@@ -259,7 +259,7 @@ def Responde(text, cursor):
          
     elif "buscar sintrom" in text:
         print("Buscando en medicamentos...")
-        query = "SELECT * FROM Medicamentos WHERE nombre = 'Genoprasol'"
+        query = "SELECT * FROM Medicamentos WHERE nombre = 'sintrom'"
         cursor.execute(query)
         results = cursor.fetchall()
 
